@@ -36,18 +36,21 @@ includes:
 This repo currently supports correct type information for the following Phony
 mocking use cases:
 
-- `mock(ClassA::class)->get()`
-- `partialMock(ClassA::class)->get()`
-- `mockBuilder(ClassA::class)->get()`
-- `mockBuilder(ClassA::class)->full()`
-- `mockBuilder(ClassA::class)->partial()`
-- `mockBuilder(ClassA::class)->partialWith()`
-- `Phony::mock(ClassA::class)->get()`
-- `Phony::partialMock(ClassA::class)->get()`
-- `Phony::mockBuilder(ClassA::class)->get()`
-- `Phony::mockBuilder(ClassA::class)->full()`
-- `Phony::mockBuilder(ClassA::class)->partial()`
-- `Phony::mockBuilder(ClassA::class)->partialWith()`
+```php
+mock(ClassA::class)->get()
+partialMock(ClassA::class)->get()
+mockBuilder(ClassA::class)->get()
+mockBuilder(ClassA::class)->full()
+mockBuilder(ClassA::class)->partial()
+mockBuilder(ClassA::class)->partialWith()
+
+Phony::mock(ClassA::class)->get()
+Phony::partialMock(ClassA::class)->get()
+Phony::mockBuilder(ClassA::class)->get()
+Phony::mockBuilder(ClassA::class)->full()
+Phony::mockBuilder(ClassA::class)->partial()
+Phony::mockBuilder(ClassA::class)->partialWith()
+```
 
 ## License
 
