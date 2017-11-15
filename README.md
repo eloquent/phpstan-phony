@@ -34,3 +34,5 @@ includes:
 ## License
 
 For the full copyright and license information, please view the [LICENSE file].
+
+[license file]: LICENSE
