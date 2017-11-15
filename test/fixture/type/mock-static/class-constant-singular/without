@@ -1,1 +1,4 @@
 Parameter #1 $iterator of function acceptIterator expects Iterator, Eloquent\Phony\Mock\Mock given.
+Parameter #1 $iterator of function acceptIterator expects Iterator, Eloquent\Phony\Mock\Mock given.
+Parameter #1 $iterator of function acceptIterator expects Iterator, Eloquent\Phony\Mock\Mock given.
+Parameter #1 $iterator of function acceptIterator expects Iterator, Eloquent\Phony\Mock\Mock given.

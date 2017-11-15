@@ -16,9 +16,12 @@
         "phpstan/phpstan": "0.9.x-dev"
     },
     "require-dev": {
-        "kahlan/kahlan": "^4.0",
         "eloquent/phony": "^2.0",
-        "friendsofphp/php-cs-fixer": "^2.8"
+        "eloquent/phony-kahlan": "^1.0",
+        "eloquent/phony-pho": "^2.0",
+        "eloquent/phony-phpunit": "^3.0",
+        "friendsofphp/php-cs-fixer": "^2.8",
+        "kahlan/kahlan": "^4.0"
     },
     "autoload": {
         "psr-4": {

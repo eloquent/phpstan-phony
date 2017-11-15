@@ -1,7 +1,7 @@
 .PHONY: test
 test: vendor
 	php --version
-	vendor/bin/kahlan --reporter=verbose
+	vendor/bin/kahlan
 
 .PHONY: lint
 lint: vendor

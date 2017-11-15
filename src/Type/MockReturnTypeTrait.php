@@ -4,22 +4,15 @@ declare(strict_types=1);
 
 namespace Eloquent\Phpstan\Phony\Type;
 
-use Eloquent\Phony\Phony;
 use PhpParser\Node\Expr\ClassConstFetch;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Name;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
-use PHPStan\Type\DynamicStaticMethodReturnTypeExtension;
 use PHPStan\Type\Type;
 
-final class MockReturnType implements DynamicStaticMethodReturnTypeExtension
+trait MockReturnTypeTrait
 {
-    public static function getClass(): string
-    {
-        return Phony::class;
-    }
-
     public function isStaticMethodSupported(
         MethodReflection $methodReflection
     ): bool {

@@ -1,0 +1,8 @@
+includes:
+  - common.neon
+
+services:
+  -
+    class: Eloquent\Phpstan\Phony\Type\Pho\MockReturnType
+    tags:
+      - phpstan.broker.dynamicStaticMethodReturnTypeExtension
