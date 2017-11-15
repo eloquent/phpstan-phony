@@ -5,4 +5,5 @@ services:
   -
     class: Eloquent\Phpstan\Phony\Type\Phpunit\MockReturnType
     tags:
+      - phpstan.broker.dynamicFunctionReturnTypeExtension
       - phpstan.broker.dynamicStaticMethodReturnTypeExtension
