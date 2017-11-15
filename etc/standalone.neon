@@ -7,3 +7,8 @@ services:
     tags:
       - phpstan.broker.dynamicFunctionReturnTypeExtension
       - phpstan.broker.dynamicStaticMethodReturnTypeExtension
+  -
+    class: Eloquent\Phpstan\Phony\Type\Standalone\MockBuilderReturnType
+    tags:
+      - phpstan.broker.dynamicFunctionReturnTypeExtension
+      - phpstan.broker.dynamicStaticMethodReturnTypeExtension

@@ -14,10 +14,10 @@ final class TypeFactory
     /**
      * Create a PHPStan type from a Phony type specification.
      */
-    public static function createMockType(InstanceHandleType $handle): Type
+    public static function createMockType(array $types): Type
     {
         return TypeCombinator::intersect(
-            ...self::createObjectTypes(Mock::class, ...$handle->types())
+            ...self::createObjectTypes(Mock::class, ...$types)
         );
     }
 

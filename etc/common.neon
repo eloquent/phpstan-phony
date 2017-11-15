@@ -3,3 +3,7 @@ services:
     class: Eloquent\Phpstan\Phony\Type\InstanceHandleGetReturnType
     tags:
       - phpstan.broker.dynamicMethodReturnTypeExtension
+  -
+    class: Eloquent\Phpstan\Phony\Type\MockBuilderGetReturnType
+    tags:
+      - phpstan.broker.dynamicMethodReturnTypeExtension

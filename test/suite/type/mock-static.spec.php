@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Eloquent\Phpstan\Phony\Test\TestAnalyser;
 
 describe('Mocking via the static facade', function () {
-    $fixturePath = __DIR__ . '/../../fixture/type/mock-static';
+    $fixturePath = __DIR__ . '/../../fixture/type';
 
     foreach (glob("$fixturePath/*", GLOB_ONLYDIR) as $path) {
         describe(trim(file_get_contents("$path/description")), function () use ($path) {
