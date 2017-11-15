@@ -31,6 +31,24 @@ includes:
   - vendor/eloquent/phpstan-phony/etc/standalone.neon # for Eloquent\Phony
 ```
 
+## Features
+
+This repo currently supports correct type information for the following Phony
+mocking use cases:
+
+- `mock(ClassA::class)->get()`
+- `partialMock(ClassA::class)->get()`
+- `mockBuilder(ClassA::class)->get()`
+- `mockBuilder(ClassA::class)->full()`
+- `mockBuilder(ClassA::class)->partial()`
+- `mockBuilder(ClassA::class)->partialWith()`
+- `Phony::mock(ClassA::class)->get()`
+- `Phony::partialMock(ClassA::class)->get()`
+- `Phony::mockBuilder(ClassA::class)->get()`
+- `Phony::mockBuilder(ClassA::class)->full()`
+- `Phony::mockBuilder(ClassA::class)->partial()`
+- `Phony::mockBuilder(ClassA::class)->partialWith()`
+
 ## License
 
 For the full copyright and license information, please view the [LICENSE file].
