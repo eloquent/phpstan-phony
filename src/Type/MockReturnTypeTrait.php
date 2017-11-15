@@ -18,17 +18,22 @@ trait MockReturnTypeTrait
 {
     public static function getClass(): string
     {
-        return self::PHONY_NAMESPACE . '\Phony';
+        return self::FACADE_CLASS;
     }
 
     public function isFunctionSupported(FunctionReflection $reflection): bool
     {
-        return self::PHONY_NAMESPACE . '\mock' === $reflection->getName();
+        $name = $reflection->getName();
+
+        return self::MOCK_FUNCTION === $name ||
+            self::PARTIAL_MOCK_FUNCTION === $name;
     }
 
     public function isStaticMethodSupported(MethodReflection $reflection): bool
     {
-        return 'mock' === $reflection->getName();
+        $name = $reflection->getName();
+
+        return 'mock' === $name || 'partialMock' === $name;
     }
 
     public function getTypeFromFunctionCall(

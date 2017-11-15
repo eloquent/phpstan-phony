@@ -15,4 +15,7 @@ final class MockReturnType implements
     use MockReturnTypeTrait;
 
     const PHONY_NAMESPACE = 'Eloquent\Phony\Pho';
+    const FACADE_CLASS = self::PHONY_NAMESPACE . '\Phony';
+    const MOCK_FUNCTION = self::PHONY_NAMESPACE . '\mock';
+    const PARTIAL_MOCK_FUNCTION = self::PHONY_NAMESPACE . '\partialMock';
 }
