@@ -1,5 +1,5 @@
 includes:
-  - ../../etc/all.neon
+  - ../../phony.neon
 services:
   errorFormatter.test:
     class: Eloquent\Phpstan\Phony\Test\TestErrorFormatter

@@ -14,7 +14,7 @@ use PHPStan\Type\Type;
 final class MockBuilderGetReturnType implements
     DynamicMethodReturnTypeExtension
 {
-    public static function getClass(): string
+    public function getClass(): string
     {
         return MockBuilder::class;
     }

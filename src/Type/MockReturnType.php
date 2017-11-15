@@ -12,23 +12,39 @@ use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\FunctionReflection;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\ParametersAcceptor;
+use PHPStan\Type\DynamicFunctionReturnTypeExtension;
+use PHPStan\Type\DynamicStaticMethodReturnTypeExtension;
 use PHPStan\Type\Type;
 
-trait MockBuilderReturnTypeTrait
+final class MockReturnType implements
+    DynamicFunctionReturnTypeExtension,
+    DynamicStaticMethodReturnTypeExtension
 {
-    public static function getClass(): string
+    public function __construct(string $namespace)
     {
-        return self::FACADE_CLASS;
+        $this->facadeClass = "$namespace\Phony";
+        $this->mockFunction = "$namespace\mock";
+        $this->partialMockFunction = "$namespace\partialMock";
+    }
+
+    public function getClass(): string
+    {
+        return $this->facadeClass;
     }
 
     public function isFunctionSupported(FunctionReflection $reflection): bool
     {
-        return self::MOCK_BUILDER_FUNCTION === $reflection->getName();
+        $name = $reflection->getName();
+
+        return $name === $this->mockFunction ||
+            $name === $this->partialMockFunction;
     }
 
     public function isStaticMethodSupported(MethodReflection $reflection): bool
     {
-        return 'mockBuilder' === $reflection->getName();
+        $name = $reflection->getName();
+
+        return 'mock' === $name || 'partialMock' === $name;
     }
 
     public function getTypeFromFunctionCall(
@@ -78,6 +94,10 @@ trait MockBuilderReturnTypeTrait
             $class = $scope->getClassReflection()->getName();
         }
 
-        return new MockBuilderType($class);
+        return new InstanceHandleType($class);
     }
+
+    private $facadeClass;
+    private $mockFunction;
+    private $partialMockFunction;
 }

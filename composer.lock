@@ -616,12 +616,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "999d2c5304fcced7844d34f2b3102e8a296744fe"
+                "reference": "6cac2bfb0f08404640752b2a9e2fc005f4846f9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/999d2c5304fcced7844d34f2b3102e8a296744fe",
-                "reference": "999d2c5304fcced7844d34f2b3102e8a296744fe",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/6cac2bfb0f08404640752b2a9e2fc005f4846f9a",
+                "reference": "6cac2bfb0f08404640752b2a9e2fc005f4846f9a",
                 "shasum": ""
             },
             "require": {
@@ -667,7 +667,7 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2017-11-14T23:13:05+00:00"
+            "time": "2017-11-16T06:29:12+00:00"
         },
         {
             "name": "psr/log",

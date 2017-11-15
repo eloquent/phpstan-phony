@@ -1,0 +1,79 @@
+services:
+
+  # common
+  -
+    class: Eloquent\Phpstan\Phony\Type\InstanceHandleGetReturnType
+    tags:
+      - phpstan.broker.dynamicMethodReturnTypeExtension
+  -
+    class: Eloquent\Phpstan\Phony\Type\MockBuilderGetReturnType
+    tags:
+      - phpstan.broker.dynamicMethodReturnTypeExtension
+  -
+    class: Eloquent\Phpstan\Phony\Type\HandleProperties
+    tags:
+      - phpstan.broker.propertiesClassReflectionExtension
+
+  # standalone
+  -
+    class: Eloquent\Phpstan\Phony\Type\MockReturnType
+    arguments:
+      namespace: Eloquent\Phony
+    tags:
+      - phpstan.broker.dynamicFunctionReturnTypeExtension
+      - phpstan.broker.dynamicStaticMethodReturnTypeExtension
+  -
+    class: Eloquent\Phpstan\Phony\Type\MockBuilderReturnType
+    arguments:
+      namespace: Eloquent\Phony
+    tags:
+      - phpstan.broker.dynamicFunctionReturnTypeExtension
+      - phpstan.broker.dynamicStaticMethodReturnTypeExtension
+
+  # kahlan
+  -
+    class: Eloquent\Phpstan\Phony\Type\MockReturnType
+    arguments:
+      namespace: Eloquent\Phony\Kahlan
+    tags:
+      - phpstan.broker.dynamicFunctionReturnTypeExtension
+      - phpstan.broker.dynamicStaticMethodReturnTypeExtension
+  -
+    class: Eloquent\Phpstan\Phony\Type\MockBuilderReturnType
+    arguments:
+      namespace: Eloquent\Phony\Kahlan
+    tags:
+      - phpstan.broker.dynamicFunctionReturnTypeExtension
+      - phpstan.broker.dynamicStaticMethodReturnTypeExtension
+
+  # phpunit
+  -
+    class: Eloquent\Phpstan\Phony\Type\MockReturnType
+    arguments:
+      namespace: Eloquent\Phony\Phpunit
+    tags:
+      - phpstan.broker.dynamicFunctionReturnTypeExtension
+      - phpstan.broker.dynamicStaticMethodReturnTypeExtension
+  -
+    class: Eloquent\Phpstan\Phony\Type\MockBuilderReturnType
+    arguments:
+      namespace: Eloquent\Phony\Phpunit
+    tags:
+      - phpstan.broker.dynamicFunctionReturnTypeExtension
+      - phpstan.broker.dynamicStaticMethodReturnTypeExtension
+
+  # pho
+  -
+    class: Eloquent\Phpstan\Phony\Type\MockReturnType
+    arguments:
+      namespace: Eloquent\Phony\Pho
+    tags:
+      - phpstan.broker.dynamicFunctionReturnTypeExtension
+      - phpstan.broker.dynamicStaticMethodReturnTypeExtension
+  -
+    class: Eloquent\Phpstan\Phony\Type\MockBuilderReturnType
+    arguments:
+      namespace: Eloquent\Phony\Pho
+    tags:
+      - phpstan.broker.dynamicFunctionReturnTypeExtension
+      - phpstan.broker.dynamicStaticMethodReturnTypeExtension

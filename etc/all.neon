@@ -1,5 +1,0 @@
-includes:
-  - standalone.neon
-  - kahlan.neon
-  - pho.neon
-  - phpunit.neon
