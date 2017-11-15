@@ -20,20 +20,36 @@
 
 ## Usage
 
-Once installed, add the appropriate include can be added to the PHPStan
-configuration:
+Once installed, the appropriate include can be added to the PHPStan
+configuration, based upon the Phony namespace in use:
+
+### Usage for `Eloquent\Phony\Kahlan`
 
 ```yaml
 includes:
-  - vendor/eloquent/phpstan-phony/etc/<appropriate configuration>.neon
+  - vendor/eloquent/phpstan-phony/etc/kahlan.neon
 ```
 
-Which include to use depends on the Phony namespace in use:
+### Usage for `Eloquent\Phony\Phpunit`
 
-- For `Eloquent\Phony\Kahlan`, use `vendor/eloquent/phpstan-phony/etc/kahlan.neon`.
-- For `Eloquent\Phony\Pho`, use `vendor/eloquent/phpstan-phony/etc/pho.neon`.
-- For `Eloquent\Phony\Phpunit`, use `vendor/eloquent/phpstan-phony/etc/phpunit.neon`.
-- For `Eloquent\Phony`, use `vendor/eloquent/phpstan-phony/etc/standalone.neon`.
+```yaml
+includes:
+  - vendor/eloquent/phpstan-phony/etc/phpunit.neon
+```
+
+### Usage for `Eloquent\Phony\Pho`
+
+```yaml
+includes:
+  - vendor/eloquent/phpstan-phony/etc/pho.neon
+```
+
+### Usage for `Eloquent\Phony`
+
+```yaml
+includes:
+  - vendor/eloquent/phpstan-phony/etc/standalone.neon
+```
 
 ## License
 
