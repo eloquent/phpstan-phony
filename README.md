@@ -37,19 +37,22 @@ This repo currently supports correct type information for the following Phony
 mocking use cases:
 
 ```php
-$mock = mock(ClassA::class)->get();
-$mock = partialMock(ClassA::class)->get();
-$mock = mockBuilder(ClassA::class)->get();
-$mock = mockBuilder(ClassA::class)->full();
-$mock = mockBuilder(ClassA::class)->partial();
-$mock = mockBuilder(ClassA::class)->partialWith();
+mock(ClassA::class)->get();
+partialMock(ClassA::class)->get();
+mockBuilder(ClassA::class)->get();
+mockBuilder(ClassA::class)->full();
+mockBuilder(ClassA::class)->partial();
+mockBuilder(ClassA::class)->partialWith();
 
-$mock = Phony::mock(ClassA::class)->get();
-$mock = Phony::partialMock(ClassA::class)->get();
-$mock = Phony::mockBuilder(ClassA::class)->get();
-$mock = Phony::mockBuilder(ClassA::class)->full();
-$mock = Phony::mockBuilder(ClassA::class)->partial();
-$mock = Phony::mockBuilder(ClassA::class)->partialWith();
+Phony::mock(ClassA::class)->get();
+Phony::partialMock(ClassA::class)->get();
+Phony::mockBuilder(ClassA::class)->get();
+Phony::mockBuilder(ClassA::class)->full();
+Phony::mockBuilder(ClassA::class)->partial();
+Phony::mockBuilder(ClassA::class)->partialWith();
+
+mock(ClassA::class)->methodA;
+onStatic(mock(ClassA::class))->staticMethodA;
 ```
 
 ## License
