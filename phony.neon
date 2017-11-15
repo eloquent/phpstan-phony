@@ -1,0 +1,9 @@
+services:
+  -
+    class: Eloquent\Phpstan\Phony\Type\MockReturnType
+    tags:
+      - phpstan.broker.dynamicStaticMethodReturnTypeExtension
+  -
+    class: Eloquent\Phpstan\Phony\Type\InstanceHandleGetReturnType
+    tags:
+      - phpstan.broker.dynamicMethodReturnTypeExtension

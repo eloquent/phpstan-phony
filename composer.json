@@ -1,0 +1,41 @@
+{
+    "name": "eloquent/phpstan-phony",
+    "description": "PHPStan configuration for Phony.",
+    "keywords": ["mock", "mocking", "stub", "stubbing", "spy", "dummy", "double", "test", "fake", "static", "analysis"],
+    "homepage": "http://eloquent-software.com/phony/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Erin Millard",
+            "email": "ezzatron@gmail.com",
+            "homepage": "http://ezzatron.com/"
+        }
+    ],
+    "require": {
+        "php": ">=7",
+        "phpstan/phpstan": "0.9.x-dev"
+    },
+    "require-dev": {
+        "kahlan/kahlan": "^4.0",
+        "eloquent/phony": "^2.0",
+        "friendsofphp/php-cs-fixer": "^2.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Eloquent\\Phpstan\\Phony\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Eloquent\\Phpstan\\Phony\\Test\\": "test/src"
+        },
+        "files": [
+            "test/src/functions.php"
+        ]
+    },
+    "config": {
+        "platform": {
+            "php": "7.0.99999"
+        }
+    }
+}

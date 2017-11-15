@@ -1,0 +1,25 @@
+version: "{branch}-{build}"
+build: false
+clone_folder: C:\projects\eloquent
+platform: 'x86'
+
+install:
+  - cinst -y OpenSSL.Light
+  - SET PATH=C:\Program Files\OpenSSL;%PATH%
+  - sc config wuauserv start= auto
+  - net start wuauserv
+  - cinst -y php
+  - cd c:\tools\php71
+  - copy php.ini-production php.ini
+  - echo date.timezone="UTC" >> php.ini
+  - echo extension_dir=ext >> php.ini
+  - echo extension=php_mbstring.dll >> php.ini
+  - echo extension=php_openssl.dll >> php.ini
+  - cd C:\projects\eloquent
+  - SET PATH=C:\tools\php71;%PATH%
+  - appveyor-retry php -r "readfile('http://getcomposer.org/installer');" | php
+  - appveyor-retry php composer.phar install --prefer-source --no-interaction
+
+test_script:
+  - cd C:\projects\eloquent
+  - vendor/bin/kahlan --reporter=verbose

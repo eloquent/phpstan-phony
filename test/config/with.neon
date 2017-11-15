@@ -1,0 +1,5 @@
+includes:
+  - ../../phony.neon
+services:
+  errorFormatter.test:
+    class: Eloquent\Phpstan\Phony\Test\TestErrorFormatter
