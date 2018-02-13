@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Eloquent\Phpstan\Phony\Type;
 
+use PhpParser\Node\Expr\Array_;
 use PhpParser\Node\Expr\ClassConstFetch;
 use PhpParser\Node\Expr\FuncCall;
 use PhpParser\Node\Expr\StaticCall;
@@ -74,27 +75,48 @@ final class MockReturnType implements
 
         $arg = $args[0]->value;
 
-        if (!$arg instanceof ClassConstFetch) {
+        $classes = [];
+
+        if ($arg instanceof Array_) {
+            foreach ($arg->items as $item) {
+                if ($item->value instanceof ClassConstFetch) {
+                    $classes[] = $this->getTypeFromClassConst($item->value, $scope);
+                }
+            }
+        }
+
+        if ($arg instanceof ClassConstFetch) {
+            $classes[] = $this->getTypeFromClassConst($arg, $scope);
+        }
+
+        $classes = array_unique(array_filter($classes));
+
+        if (!$classes) {
             return $reflection->getReturnType();
         }
 
-        $class = $arg->class;
+        return new InstanceHandleType(...$classes);
+    }
+
+    private function getTypeFromClassConst(ClassConstFetch $classConstFetch, Scope $scope): ?string
+    {
+        $class = $classConstFetch->class;
 
         if (!$class instanceof Name) {
-            return $reflection->getReturnType();
+            return null;
         }
 
         $class = (string) $class;
 
         if ('static' === $class) {
-            return $reflection->getReturnType();
+            return null;
         }
 
         if ('self' === $class) {
             $class = $scope->getClassReflection()->getName();
         }
 
-        return new InstanceHandleType($class);
+        return $class;
     }
 
     private $facadeClass;
