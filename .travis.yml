@@ -14,10 +14,6 @@ before_install: phpenv config-rm xdebug.ini || true
 install: composer install --prefer-dist --no-progress --no-interaction
 script: make test
 
-env:
-  global:
-    - secure: "H+kkfBDvPjGZl7xCP/fUcGuLfpEFqTGIN1O8cHe5uuO4Dei2/84j69l9sPjMUrqWPHeyj+2WvRLD1CvIeXtRj2VKeDPzG+zJxYhvmeKraILR/ItxpbKqI1SQ4w7ycQqsAq5NF3XxDPolgEnVOFXt1BSctXA4X87GtWbyulcHFpMobhwwYIP1DO/S9Q76D+bbojKXaidnxKkxmRFx4meNQT6TM/Jsit3Tvml13qoaL3xHMkvRNqB5azTd3SymWkGsB2lxBWrPuWbgHRvKj1n2Li0/yhJM/K0Fd8Vub8ps3gfPnEQRZ+gUMKtPpNP/yUJDBG+7U6I00oDYb5YT1XfMhRIIytm1jUawlJ3F4tpBZq5o3G2Nw/5BCBPePB45qAv7+L/sPJdftbMsXdRfj4+IgRTu6eHElf0A4gwVsyrm71us83xaC6hj4GmTf5Q7XaY7V+ia4eDtetJq4wHQvW5R5wsUpPNI7UloCnuMqpub3+EcejUaL81vE770KaWBHvAgjxAZzcIxywiRhYp+jyAHlrWBUM2AZ9QW3JfeztAuW74CsQfU3HWJEhdI35osi+mu3Hlc4xaYBIhfLLFZSYMpfYK7npsA6jDuYQ17ZZCIBOObrOXLX3foooZKLDLzrY2agzKvbrFaHtSgi1oHvQyhfPj61JFUWiOuj7SyO+7cEac="
-
 cache:
   directories:
     - $HOME/.composer/cache/files
