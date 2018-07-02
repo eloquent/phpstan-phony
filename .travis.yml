@@ -12,7 +12,7 @@ matrix:
 
 before_install:
     - phpenv config-rm xdebug.ini || true
-    - "[[ $GITHUB_TOKEN ]] && composer config --global github-oauth.github.com $GITHUB_TOKEN"
+    - 'if [[ $GITHUB_TOKEN ]]; then echo "Configuring Composer GitHub token..."; composer config --global github-oauth.github.com "$GITHUB_TOKEN"; else echo "GitHub token unavailable."; fi'
 install: composer install --prefer-dist --no-progress --no-interaction
 script: make test
 
