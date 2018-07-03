@@ -8,7 +8,13 @@ describe('Mocking via the static facade', function () {
     $fixturePath = __DIR__ . '/../../fixture/type';
 
     foreach (glob("$fixturePath/*", GLOB_ONLYDIR) as $path) {
-        describe(trim(file_get_contents("$path/description")), function () use ($path) {
+        $description = file_get_contents("$path/description");
+
+        if (!$description) {
+            throw new RuntimeException('Unable to load test description.');
+        }
+
+        describe(trim($description), function () use ($path) {
             it('should produce expected output with vanilla phpstan', function () use ($path) {
                 $configuration = 'without';
 

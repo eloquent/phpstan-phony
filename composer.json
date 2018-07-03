@@ -12,16 +12,15 @@
         }
     ],
     "require": {
-        "php": ">=7",
-        "phpstan/phpstan": "^0.9|^0.10"
+        "php": ">=7.1",
+        "phpstan/phpstan": "^0.10"
     },
     "require-dev": {
-        "eloquent/phony": "^2.0",
-        "eloquent/phony-kahlan": "^1.0",
-        "eloquent/phony-pho": "^2.0",
-        "eloquent/phony-phpunit": "^3.0",
-        "friendsofphp/php-cs-fixer": "^2.8",
-        "kahlan/kahlan": "^4.0"
+        "eloquent/phony": "^3",
+        "eloquent/phony-kahlan": "^2",
+        "eloquent/phony-phpunit": "^4",
+        "friendsofphp/php-cs-fixer": "^2.12",
+        "kahlan/kahlan": "^4.1"
     },
     "autoload": {
         "psr-4": {
@@ -38,7 +37,7 @@
     },
     "config": {
         "platform": {
-            "php": "7.0.99999"
+            "php": "7.1.99999"
         }
     }
 }

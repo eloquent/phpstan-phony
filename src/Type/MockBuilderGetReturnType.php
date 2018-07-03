@@ -8,6 +8,7 @@ use Eloquent\Phony\Mock\Builder\MockBuilder;
 use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
+use PHPStan\Reflection\ParametersAcceptorSelector;
 use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\Type;
 
@@ -41,6 +42,12 @@ final class MockBuilderGetReturnType implements
             return TypeFactory::createMockType($calledOnType->types());
         }
 
-        return $methodReflection->getReturnType();
+        $acceptor = ParametersAcceptorSelector::selectFromArgs(
+            $scope,
+            $methodCall->args,
+            $methodReflection->getVariants()
+        );
+
+        return $acceptor->getReturnType();
     }
 }

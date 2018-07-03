@@ -10,10 +10,6 @@ $mock = Eloquent\Phony\Kahlan\Phony::partialMock(Iterator::class)->get();
 acceptIterator($mock);
 acceptMock($mock);
 
-$mock = Eloquent\Phony\Pho\Phony::partialMock(Iterator::class)->get();
-acceptIterator($mock);
-acceptMock($mock);
-
 $mock = Eloquent\Phony\Phpunit\Phony::partialMock(Iterator::class)->get();
 acceptIterator($mock);
 acceptMock($mock);
