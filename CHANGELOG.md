@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.0 (2018-07-03)
+
+- **[IMPROVED]** Support for PHPStan `0.10.x`.
+
 ## 0.1.1 (2017-12-03)
 
 - **[IMPROVED]** Updated Composer constraint for PHPStan.
