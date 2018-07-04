@@ -1,21 +1,16 @@
 language: php
-
+sudo: false
 matrix:
   include:
-    - php: 7.0
     - php: 7.1
     - php: 7.2
     - php: nightly
   fast_finish: true
   allow_failures:
     - php: nightly
-
-before_install: phpenv config-rm xdebug.ini || true
-install: composer install --prefer-dist --no-progress --no-interaction
-script: make test
-
 cache:
   directories:
     - $HOME/.composer/cache/files
+install: make ci-install
+script: make ci
 
-sudo: false

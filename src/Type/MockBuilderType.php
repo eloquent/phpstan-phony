@@ -6,6 +6,7 @@ namespace Eloquent\Phpstan\Phony\Type;
 
 use Eloquent\Phony\Mock\Builder\MockBuilder;
 use PHPStan\Type\ObjectType;
+use PHPStan\Type\VerbosityLevel;
 
 final class MockBuilderType extends ObjectType
 {
@@ -21,11 +22,11 @@ final class MockBuilderType extends ObjectType
         return $this->types;
     }
 
-    public function describe(): string
+    public function describe(VerbosityLevel $level): string
     {
         return sprintf(
             '%s<%s>',
-            parent::describe(),
+            parent::describe($level),
             implode('&', $this->types)
         );
     }

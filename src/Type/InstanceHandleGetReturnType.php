@@ -8,6 +8,7 @@ use Eloquent\Phony\Mock\Handle\InstanceHandle;
 use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
+use PHPStan\Reflection\ParametersAcceptorSelector;
 use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\Type;
 
@@ -36,6 +37,12 @@ final class InstanceHandleGetReturnType implements
             return TypeFactory::createMockType($calledOnType->types());
         }
 
-        return $methodReflection->getReturnType();
+        $acceptor = ParametersAcceptorSelector::selectFromArgs(
+            $scope,
+            $methodCall->args,
+            $methodReflection->getVariants()
+        );
+
+        return $acceptor->getReturnType();
     }
 }

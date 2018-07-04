@@ -12,9 +12,11 @@ use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\FunctionReflection;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\ParametersAcceptor;
+use PHPStan\Reflection\ParametersAcceptorSelector;
 use PHPStan\Type\DynamicFunctionReturnTypeExtension;
 use PHPStan\Type\DynamicStaticMethodReturnTypeExtension;
 use PHPStan\Type\Type;
+use RuntimeException;
 
 final class MockReturnType implements
     DynamicFunctionReturnTypeExtension,
@@ -52,7 +54,13 @@ final class MockReturnType implements
         FuncCall $call,
         Scope $scope
     ): Type {
-        return $this->getTypeFromCall($reflection, $call->args, $scope);
+        $acceptor = ParametersAcceptorSelector::selectFromArgs(
+            $scope,
+            $call->args,
+            $reflection->getVariants()
+        );
+
+        return $this->getTypeFromCall($acceptor, $call->args, $scope);
     }
 
     public function getTypeFromStaticMethodCall(
@@ -60,7 +68,13 @@ final class MockReturnType implements
         StaticCall $call,
         Scope $scope
     ): Type {
-        return $this->getTypeFromCall($reflection, $call->args, $scope);
+        $acceptor = ParametersAcceptorSelector::selectFromArgs(
+            $scope,
+            $call->args,
+            $reflection->getVariants()
+        );
+
+        return $this->getTypeFromCall($acceptor, $call->args, $scope);
     }
 
     private function getTypeFromCall(
@@ -91,7 +105,15 @@ final class MockReturnType implements
         }
 
         if ('self' === $class) {
-            $class = $scope->getClassReflection()->getName();
+            $classReflection = $scope->getClassReflection();
+
+            if (!$classReflection) {
+                throw new RuntimeException(
+                    'Unable to determine the class name of a self:: parameter.'
+                );
+            }
+
+            $class = $classReflection->getName();
         }
 
         return new InstanceHandleType($class);
