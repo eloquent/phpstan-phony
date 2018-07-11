@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.3.0 (2018-07-04)
+## 0.3.0 (2018-07-11)
 
 - **[BC BREAK]** Dropped support for PHP `7.0.x`.
 - **[BC BREAK]** Dropped support for PHPStan `0.9.x`.
