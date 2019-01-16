@@ -13,7 +13,7 @@ final class TestAnalyser
             "$root/vendor/bin/phpstan",
             'analyse',
             '--level=7',
-            '--errorFormat=test',
+            '--error-format=test',
             '--no-progress',
             '--configuration'
         );
