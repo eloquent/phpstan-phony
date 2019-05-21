@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.0 (2019-05-21)
+
+- **[NEW]** Support for PHPStan Extension Installer.
+
 ## 0.4.0 (2019-01-17)
 
 - **[BC BREAK]** Dropped support for PHPStan `0.10.x`.
