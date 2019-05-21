@@ -7,7 +7,7 @@ use Eloquent\Phpstan\Phony\Test\TestAnalyser;
 describe('Mocking via the static facade', function () {
     $fixturePath = __DIR__ . '/../../fixture/type';
 
-    foreach (glob("$fixturePath/*", GLOB_ONLYDIR) as $path) {
+    foreach (safeGlob("$fixturePath/*", GLOB_ONLYDIR) as $path) {
         $description = file_get_contents("$path/description");
 
         if (!$description) {
