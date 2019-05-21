@@ -11,6 +11,7 @@
             "homepage": "http://ezzatron.com/"
         }
     ],
+    "type": "phpstan-extension",
     "require": {
         "php": ">=7.1",
         "phpstan/phpstan": "^0.11"
@@ -43,6 +44,11 @@
     "extra": {
         "branch-alias": {
             "dev-master": "0.5.x-dev"
+        },
+        "phpstan": {
+            "includes": [
+                "phony.neon"
+            ]
         }
     }
 }
