@@ -1,3 +1,4 @@
 /.php_cs.cache
 /artifacts/
+/composer.lock
 /vendor/
