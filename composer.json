@@ -19,7 +19,7 @@
     "require-dev": {
         "eloquent/phony": "^3",
         "eloquent/phony-kahlan": "^2",
-        "eloquent/phony-phpunit": "^4",
+        "eloquent/phony-phpunit": "^4 || ^5",
         "friendsofphp/php-cs-fixer": "^2.12",
         "kahlan/kahlan": "^4.1"
     },
@@ -35,11 +35,6 @@
         "files": [
             "test/src/functions.php"
         ]
-    },
-    "config": {
-        "platform": {
-            "php": "7.1.99999"
-        }
     },
     "extra": {
         "branch-alias": {
