@@ -9,5 +9,6 @@ matrix:
   fast_finish: true
   allow_failures:
     - php: nightly
-install: make ci-install
+before_install: phpenv config-rm xdebug.ini || true
+install: make vendor
 script: make ci

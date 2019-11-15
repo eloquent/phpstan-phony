@@ -17,10 +17,11 @@
         "phpstan/phpstan": "^0.11"
     },
     "require-dev": {
+        "eloquent/code-style": "^1",
         "eloquent/phony": "^3",
         "eloquent/phony-kahlan": "^2",
         "eloquent/phony-phpunit": "^4 || ^5",
-        "friendsofphp/php-cs-fixer": "^2.12",
+        "friendsofphp/php-cs-fixer": "^2",
         "kahlan/kahlan": "^4.1"
     },
     "autoload": {
