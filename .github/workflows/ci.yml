@@ -1,0 +1,29 @@
+name: CI
+on:
+  push:
+  pull_request:
+  schedule:
+  - cron: 0 14 * * 0 # Sunday 2PM UTC = Monday 12AM AEST
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['7.1', '7.2', '7.3']
+    name: PHP ${{ matrix.php }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Set up PHP
+      uses: shivammathur/setup-php@master
+      with:
+        php-version: ${{ matrix.php }}
+        coverage: none
+    - name: Check PHP Version
+      run: php -v
+    - name: Install dependencies
+      run: make vendor
+    - name: Check Kahlan Version
+      run: vendor/bin/kahlan --no-header --version
+    - name: Make
+      run: make ci
