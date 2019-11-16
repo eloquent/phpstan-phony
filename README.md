@@ -11,12 +11,15 @@
 
 ## Usage
 
-Once installed, a simple include can be added to the PHPStan configuration:
+If you use [phpstan/extension-installer], no configuration is necessary.
+Alternatively, an include can be added to the PHPStan configuration:
 
 ```yaml
 includes:
   - vendor/eloquent/phpstan-phony/phony.neon
 ```
+
+[phpstan/extension-installer]: https://github.com/phpstan/extension-installer
 
 ## Features
 
