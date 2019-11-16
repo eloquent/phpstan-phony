@@ -2,7 +2,7 @@ includes:
   - phony.neon
 parameters:
   level: max
-  paths: [src, test]
+  paths: [src, test/src, test/suite]
   ignoreErrors:
     - /^Function describe not found.$/
     - /^Function expect not found.$/
