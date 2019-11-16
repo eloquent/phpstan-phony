@@ -11,8 +11,8 @@
 
 ## Usage
 
-If you use [phpstan/extension-installer], no configuration is necessary.
-Alternatively, an include can be added to the PHPStan configuration:
+- When using [phpstan/extension-installer], no configuration is necessary.
+- Alternatively, an include can be added to the PHPStan configuration:
 
 ```yaml
 includes:
