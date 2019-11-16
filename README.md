@@ -32,18 +32,26 @@ mock([ClassA::class, ClassB::class])->get();
 partialMock(ClassA::class)->get();
 partialMock([ClassA::class, ClassB::class])->get();
 mockBuilder(ClassA::class)->get();
+mockBuilder([ClassA::class, ClassB::class])->get();
 mockBuilder(ClassA::class)->full();
+mockBuilder([ClassA::class, ClassB::class])->full();
 mockBuilder(ClassA::class)->partial();
+mockBuilder([ClassA::class, ClassB::class])->partial();
 mockBuilder(ClassA::class)->partialWith();
+mockBuilder([ClassA::class, ClassB::class])->partialWith();
 
 Phony::mock(ClassA::class)->get();
 Phony::mock([ClassA::class, ClassB::class])->get();
 Phony::partialMock(ClassA::class)->get();
 Phony::partialMock([ClassA::class, ClassB::class])->get();
 Phony::mockBuilder(ClassA::class)->get();
+Phony::mockBuilder([ClassA::class, ClassB::class])->get();
 Phony::mockBuilder(ClassA::class)->full();
+Phony::mockBuilder([ClassA::class, ClassB::class])->full();
 Phony::mockBuilder(ClassA::class)->partial();
+Phony::mockBuilder([ClassA::class, ClassB::class])->partial();
 Phony::mockBuilder(ClassA::class)->partialWith();
+Phony::mockBuilder([ClassA::class, ClassB::class])->partialWith();
 
 mock(ClassA::class)->methodA;
 onStatic(mock(ClassA::class))->staticMethodA;

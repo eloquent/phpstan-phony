@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace Eloquent\Phpstan\Phony\Type;
 
-use PhpParser\Node\Expr\ClassConstFetch;
 use PhpParser\Node\Expr\FuncCall;
 use PhpParser\Node\Expr\StaticCall;
-use PhpParser\Node\Name;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\FunctionReflection;
 use PHPStan\Reflection\MethodReflection;
@@ -16,12 +14,13 @@ use PHPStan\Reflection\ParametersAcceptorSelector;
 use PHPStan\Type\DynamicFunctionReturnTypeExtension;
 use PHPStan\Type\DynamicStaticMethodReturnTypeExtension;
 use PHPStan\Type\Type;
-use RuntimeException;
 
 final class MockBuilderReturnType implements
     DynamicFunctionReturnTypeExtension,
     DynamicStaticMethodReturnTypeExtension
 {
+    use AcceptsMockTypes;
+
     public function __construct(string $namespace)
     {
         $this->facadeClass = "$namespace\Phony";
@@ -80,37 +79,9 @@ final class MockBuilderReturnType implements
             return $reflection->getReturnType();
         }
 
-        $arg = $args[0]->value;
+        $classes = $this->getClassListFromMockTypesArg($args[0], $scope);
 
-        if (!$arg instanceof ClassConstFetch) {
-            return $reflection->getReturnType();
-        }
-
-        $class = $arg->class;
-
-        if (!$class instanceof Name) {
-            return $reflection->getReturnType();
-        }
-
-        $class = (string) $class;
-
-        if ('static' === $class) {
-            return $reflection->getReturnType();
-        }
-
-        if ('self' === $class) {
-            $classReflection = $scope->getClassReflection();
-
-            if (!$classReflection) {
-                throw new RuntimeException(
-                    'Unable to determine the class name of a self:: parameter.'
-                );
-            }
-
-            $class = $classReflection->getName();
-        }
-
-        return new MockBuilderType($class);
+        return new MockBuilderType(...$classes);
     }
 
     private $facadeClass;
