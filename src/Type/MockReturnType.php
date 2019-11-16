@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Eloquent\Phpstan\Phony\Type;
 
+use PhpParser\Node\Expr\Array_;
 use PhpParser\Node\Expr\ClassConstFetch;
 use PhpParser\Node\Expr\FuncCall;
 use PhpParser\Node\Expr\StaticCall;
@@ -88,35 +89,62 @@ final class MockReturnType implements
 
         $arg = $args[0]->value;
 
-        if (!$arg instanceof ClassConstFetch) {
+        if ($arg instanceof ClassConstFetch) {
+            $class = $this->getClassNameFromConst($arg, $scope);
+
+            if ($class) {
+                return new InstanceHandleType($class);
+            }
+        }
+
+        if (!$arg instanceof Array_) {
             return $reflection->getReturnType();
         }
 
-        $class = $arg->class;
+        $classes = [];
+
+        foreach ($arg->items as $item) {
+            if (!$item->value instanceof ClassConstFetch) {
+                continue;
+            }
+
+            if ($class = $this->getClassNameFromConst($item->value, $scope)) {
+                $classes[] = $class;
+            }
+        }
+
+        return new InstanceHandleType(...array_unique($classes));
+    }
+
+    private function getClassNameFromConst(
+        ClassConstFetch $classConst,
+        Scope $scope
+    ): ?string {
+        $class = $classConst->class;
 
         if (!$class instanceof Name) {
-            return $reflection->getReturnType();
+            return null;
         }
 
-        $class = (string) $class;
+        $class = $class->toString();
 
         if ('static' === $class) {
-            return $reflection->getReturnType();
+            return null;
         }
 
         if ('self' === $class) {
             $classReflection = $scope->getClassReflection();
 
-            if (!$classReflection) {
-                throw new RuntimeException(
-                    'Unable to determine the class name of a self:: parameter.'
-                );
+            if ($classReflection) {
+                return $classReflection->getName();
             }
 
-            $class = $classReflection->getName();
+            throw new RuntimeException(
+                'Unable to determine the class name of a self:: parameter.'
+            );
         }
 
-        return new InstanceHandleType($class);
+        return $class;
     }
 
     private $facadeClass;

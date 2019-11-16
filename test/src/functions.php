@@ -6,6 +6,7 @@ use Eloquent\Phony\Mock\Mock;
 
 function acceptMock(Mock $mock) {}
 function acceptIterator(Iterator $iterator) {}
+function acceptSerializable(Serializable $serializable) {}
 
 function safeGlob() {
     $result = call_user_func_array('glob', func_get_args());
