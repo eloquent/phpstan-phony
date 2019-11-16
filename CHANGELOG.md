@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.0 (2019-11-16)
+
+- **[NEW]** Support for multi-type mocks and mock builders.
+
 ## 0.5.0 (2019-05-21)
 
 - **[NEW]** Support for PHPStan Extension Installer.
