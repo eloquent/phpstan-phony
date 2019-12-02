@@ -1,5 +1,9 @@
 # Changelog
 
+## Next release
+
+- **[BC BREAK]** PHP 7.1 is no longer supported.
+
 ## 0.6.0 (2019-11-16)
 
 - **[NEW]** Support for multi-type mocks and mock builders.
