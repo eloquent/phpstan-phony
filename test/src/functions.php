@@ -4,11 +4,19 @@ declare(strict_types=1);
 
 use Eloquent\Phony\Mock\Mock;
 
-function acceptMock(Mock $mock) {}
-function acceptIterator(Iterator $iterator) {}
-function acceptSerializable(Serializable $serializable) {}
+function acceptMock(Mock $mock): void {}
 
-function safeGlob() {
+/**
+ * @param Iterator<mixed> $iterator
+ */
+function acceptIterator(Iterator $iterator): void {}
+
+function acceptSerializable(Serializable $serializable): void {}
+
+/**
+ * @return array<string>
+ */
+function safeGlob(): array {
     $result = call_user_func_array('glob', func_get_args());
 
     if (!$result) {

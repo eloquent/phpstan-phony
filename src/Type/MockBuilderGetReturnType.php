@@ -39,7 +39,7 @@ final class MockBuilderGetReturnType implements
         $calledOnType = $scope->getType($methodCall->var);
 
         if ($calledOnType instanceof MockBuilderType) {
-            return TypeFactory::createMockType($calledOnType->types());
+            return TypeFactory::createMockType(...$calledOnType->types());
         }
 
         $acceptor = ParametersAcceptorSelector::selectFromArgs(

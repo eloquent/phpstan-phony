@@ -32,11 +32,21 @@ final class TestAnalyser
         return '';
     }
 
+    /**
+     * @return array<string>
+     */
     private static function escapeArguments(string ...$arguments): array
     {
         return array_map('escapeshellarg', $arguments);
     }
 
+    /**
+     * @var string
+     */
     private static $root;
+
+    /**
+     * @var array<string>
+     */
     private static $arguments;
 }

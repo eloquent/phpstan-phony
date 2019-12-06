@@ -6,7 +6,7 @@ namespace Eloquent\Phpstan\Phony\Test;
 
 class StaticMockHandlePropertiesFixture
 {
-    public static function methodA(): int
+    public static function methodA(): void
     {
     }
 }

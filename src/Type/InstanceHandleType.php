@@ -17,6 +17,9 @@ final class InstanceHandleType extends ObjectType
         $this->types = $types;
     }
 
+    /**
+     * @return array<string>
+     */
     public function types(): array
     {
         return $this->types;

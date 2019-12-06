@@ -7,6 +7,7 @@ namespace Eloquent\Phpstan\Phony\Type;
 use Eloquent\Phony\Stub\StubVerifier;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\PropertyReflection;
+use PHPStan\TrinaryLogic;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\Type;
 
@@ -23,7 +24,12 @@ final class HandlePropertyReflection implements PropertyReflection
         return $this->declaringClass;
     }
 
-    public function getType(): Type
+    public function getReadableType(): Type
+    {
+        return $this->type;
+    }
+
+    public function getWritableType(): Type
     {
         return $this->type;
     }
@@ -43,6 +49,16 @@ final class HandlePropertyReflection implements PropertyReflection
         return true;
     }
 
+    public function getDocComment(): ?string
+    {
+        return null;
+    }
+
+    public function canChangeTypeAfterAssignment(): bool
+    {
+        return false;
+    }
+
     public function isReadable(): bool
     {
         return true;
@@ -51,6 +67,21 @@ final class HandlePropertyReflection implements PropertyReflection
     public function isWritable(): bool
     {
         return false;
+    }
+
+    public function isDeprecated(): TrinaryLogic
+    {
+        return TrinaryLogic::createNo();
+    }
+
+    public function getDeprecatedDescription(): ?string
+    {
+        return null;
+    }
+
+    public function isInternal(): TrinaryLogic
+    {
+        return TrinaryLogic::createNo();
     }
 
     private $declaringClass;
