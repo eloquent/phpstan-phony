@@ -5,12 +5,9 @@ declare(strict_types=1);
 namespace Eloquent\Phpstan\Phony\Type;
 
 use Eloquent\Phony\Mock\Mock;
-use PHPStan\Type\Generic\GenericObjectType;
-use PHPStan\Type\IntersectionType;
-use PHPStan\Type\MixedType;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\Type;
-use Traversable;
+use PHPStan\Type\TypeCombinator;
 
 final class TypeFactory
 {
@@ -25,8 +22,9 @@ final class TypeFactory
             return $mockType;
         }
 
-        return new IntersectionType(
-            array_merge([$mockType], self::createObjectTypes(...$classes))
+        return TypeCombinator::intersect(
+            $mockType,
+            ...self::createObjectTypes(...$classes)
         );
     }
 
@@ -38,14 +36,7 @@ final class TypeFactory
         $types = [];
 
         foreach ($classes as $class) {
-            if (is_a($class, Traversable::class, true)) {
-                $types[] = new GenericObjectType(
-                    $class,
-                    [new MixedType(), new MixedType()]
-                );
-            } else {
-                $types[] = new ObjectType($class);
-            }
+            $types[] = new ObjectType($class);
         }
 
         return $types;
