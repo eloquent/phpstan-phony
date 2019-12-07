@@ -34,7 +34,7 @@ final class InstanceHandleGetReturnType implements
         $calledOnType = $scope->getType($methodCall->var);
 
         if ($calledOnType instanceof InstanceHandleType) {
-            return TypeFactory::createMockType($calledOnType->types());
+            return TypeFactory::createMockType(...$calledOnType->types());
         }
 
         $acceptor = ParametersAcceptorSelector::selectFromArgs(

@@ -13,6 +13,9 @@ use RuntimeException;
 
 trait AcceptsMockTypes
 {
+    /**
+     * @return array<string>
+     */
     private function getClassListFromMockTypesArg(
         Arg $arg,
         Scope $scope

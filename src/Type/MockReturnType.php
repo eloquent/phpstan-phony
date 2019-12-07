@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Eloquent\Phpstan\Phony\Type;
 
+use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\FuncCall;
 use PhpParser\Node\Expr\StaticCall;
 use PHPStan\Analyser\Scope;
@@ -59,7 +60,7 @@ final class MockReturnType implements
             $reflection->getVariants()
         );
 
-        return $this->getTypeFromCall($acceptor, $call->args, $scope);
+        return $this->getTypeFromCall($acceptor, $scope, ...$call->args);
     }
 
     public function getTypeFromStaticMethodCall(
@@ -73,18 +74,19 @@ final class MockReturnType implements
             $reflection->getVariants()
         );
 
-        return $this->getTypeFromCall($acceptor, $call->args, $scope);
+        return $this->getTypeFromCall($acceptor, $scope, ...$call->args);
     }
 
     private function getTypeFromCall(
         ParametersAcceptor $reflection,
-        array $args,
-        Scope $scope
+        Scope $scope,
+        Arg ...$args
     ): Type {
         if (count($args) === 0) {
             return $reflection->getReturnType();
         }
 
+        /** @var array<string> */
         $classes = $this->getClassListFromMockTypesArg($args[0], $scope);
 
         return new InstanceHandleType(...$classes);

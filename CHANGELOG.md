@@ -3,6 +3,8 @@
 ## Next release
 
 - **[BC BREAK]** PHP 7.1 is no longer supported.
+- **[BC BREAK]** Dropped support for PHPStan `0.11.x`.
+- **[NEW]** Support for PHPStan `0.12.x`.
 
 ## 0.6.0 (2019-11-16)
 
