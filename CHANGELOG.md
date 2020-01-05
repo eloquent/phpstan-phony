@@ -1,6 +1,6 @@
 # Changelog
 
-## Next release
+## 0.7.0 (2020-01-06)
 
 - **[BC BREAK]** PHP 7.1 is no longer supported.
 - **[BC BREAK]** Dropped support for PHPStan `0.11.x`.
