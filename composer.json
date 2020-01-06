@@ -18,9 +18,9 @@
     },
     "require-dev": {
         "eloquent/code-style": "^1",
-        "eloquent/phony": "^3",
-        "eloquent/phony-kahlan": "^2",
-        "eloquent/phony-phpunit": "^4 || ^5",
+        "eloquent/phony": "^4",
+        "eloquent/phony-kahlan": "^3",
+        "eloquent/phony-phpunit": "^6",
         "friendsofphp/php-cs-fixer": "^2",
         "kahlan/kahlan": "^4.1"
     },
