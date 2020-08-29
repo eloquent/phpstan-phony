@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.1 (2020-08-29)
+
+- **[IMPROVED]** Uses a tagged PHPStan `0.12.x` version.
+
 ## 0.7.0 (2020-01-06)
 
 - **[BC BREAK]** PHP 7.1 is no longer supported.
