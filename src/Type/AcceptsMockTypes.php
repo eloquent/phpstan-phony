@@ -6,6 +6,7 @@ namespace Eloquent\Phpstan\Phony\Type;
 
 use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\Array_;
+use PhpParser\Node\Expr\ArrayItem;
 use PhpParser\Node\Expr\ClassConstFetch;
 use PhpParser\Node\Name;
 use PHPStan\Analyser\Scope;
@@ -39,6 +40,10 @@ trait AcceptsMockTypes
         $classes = [];
 
         foreach ($argValue->items as $item) {
+            if (!$item instanceof ArrayItem) {
+                continue;
+            }
+
             $itemValue = $item->value;
 
             if (!$itemValue instanceof ClassConstFetch) {
