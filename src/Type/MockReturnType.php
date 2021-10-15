@@ -54,13 +54,16 @@ final class MockReturnType implements
         FuncCall $call,
         Scope $scope
     ): Type {
+        /** @var Arg[] */
+        $args = $call->args;
+
         $acceptor = ParametersAcceptorSelector::selectFromArgs(
             $scope,
-            $call->args,
+            $args,
             $reflection->getVariants()
         );
 
-        return $this->getTypeFromCall($acceptor, $scope, ...$call->args);
+        return $this->getTypeFromCall($acceptor, $scope, ...$args);
     }
 
     public function getTypeFromStaticMethodCall(
@@ -68,13 +71,16 @@ final class MockReturnType implements
         StaticCall $call,
         Scope $scope
     ): Type {
+        /** @var Arg[] */
+        $args = $call->args;
+
         $acceptor = ParametersAcceptorSelector::selectFromArgs(
             $scope,
-            $call->args,
+            $args,
             $reflection->getVariants()
         );
 
-        return $this->getTypeFromCall($acceptor, $scope, ...$call->args);
+        return $this->getTypeFromCall($acceptor, $scope, ...$args);
     }
 
     private function getTypeFromCall(

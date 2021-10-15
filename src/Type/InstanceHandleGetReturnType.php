@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Eloquent\Phpstan\Phony\Type;
 
 use Eloquent\Phony\Mock\Handle\InstanceHandle;
+use PhpParser\Node\Arg;
 use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
@@ -28,18 +29,21 @@ final class InstanceHandleGetReturnType implements
 
     public function getTypeFromMethodCall(
         MethodReflection $methodReflection,
-        MethodCall $methodCall,
+        MethodCall $call,
         Scope $scope
     ): Type {
-        $calledOnType = $scope->getType($methodCall->var);
+        $calledOnType = $scope->getType($call->var);
 
         if ($calledOnType instanceof InstanceHandleType) {
             return TypeFactory::createMockType(...$calledOnType->types());
         }
 
+        /** @var Arg[] */
+        $args = $call->args;
+
         $acceptor = ParametersAcceptorSelector::selectFromArgs(
             $scope,
-            $methodCall->args,
+            $args,
             $methodReflection->getVariants()
         );
 
