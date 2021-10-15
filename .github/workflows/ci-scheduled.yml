@@ -1,7 +1,7 @@
-name: CI
+name: CI (scheduled)
 on:
-  push:
-  pull_request:
+  schedule:
+  - cron: 0 14 * * 0 # Sunday 2PM UTC = Monday 12AM AEST
 jobs:
   test:
     runs-on: ubuntu-latest
