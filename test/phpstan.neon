@@ -5,6 +5,6 @@ parameters:
     - %rootDir%/../../../kahlan-config.php
 
   ignoreErrors:
-    - /^Function describe not found.$/
-    - /^Function expect not found.$/
-    - /^Function it not found.$/
+    - /^Function describe not found\.$/
+    - /^Function expect not found\.$/
+    - /^Function it not found\.$/

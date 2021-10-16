@@ -41,12 +41,12 @@ final class TestAnalyser
     }
 
     /**
-     * @var string
+     * @var string|null
      */
     private static $root;
 
     /**
-     * @var array<string>
+     * @var array<string>|null
      */
     private static $arguments;
 }

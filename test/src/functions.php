@@ -19,6 +19,10 @@ function acceptSerializable(Serializable $serializable): void {}
 function safeGlob(): array {
     $result = call_user_func_array('glob', func_get_args());
 
+    if (!is_array($result)) {
+        throw new RuntimeException('Unexpected glob() result');
+    }
+
     if (!$result) {
         throw new RuntimeException('No paths found');
     }
