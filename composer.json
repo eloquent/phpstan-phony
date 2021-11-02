@@ -14,7 +14,7 @@
     "type": "phpstan-extension",
     "require": {
         "php": "^7.3 || ^8",
-        "phpstan/phpstan": "^0.12"
+        "phpstan/phpstan": "^1"
     },
     "require-dev": {
         "eloquent/code-style": "^2",
